@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://script/Field.gd" type="Script" id=2]
+[ext_resource path="res://image/field.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 1 )
+
+[node name="Field" type="Area2D"]
+position = Vector2( -0.210228, 0.420441 )
+gravity = 0.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="fieldItem" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="tab" type="Label" parent="fieldItem"]
+margin_left = -40.0
+margin_top = -40.0
+margin_right = 40.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.631373, 0.12549, 0.12549, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button" type="Button" parent="fieldItem"]
+show_behind_parent = true
+margin_left = -39.0
+margin_top = -39.0
+margin_right = 40.0
+margin_bottom = 39.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_down" from="fieldItem/button" to="." method="_on_Button_button_down"]
