@@ -14,6 +14,10 @@ config/name="New"
 run/main_scene="res://scene/Main.tscn"
 config/icon="res://image/icon.png"
 
+[autoload]
+
+GlobalArr="*res://script/GlobalArr.gd"
+
 [gdnative]
 
 singletons=[  ]

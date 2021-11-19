@@ -3,21 +3,20 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody2D
 
-var arr=[]
-
 var SetArr=preload(\"res://script/SetArr.gd\")
 var setArr=SetArr.new()
 
 var ArrRand=preload(\"res://script/ArrRandom.gd\")
 var arrRand=ArrRand.new()
 
-	
-	
 		
 func _ready():
+	var arr=[]
 	arr=setArr.setArr(arr)
 	arr=arrRand.arrRandom(arr)
-	giveArrPrint(arr)
+	# может здесь сделать проверку флага на необходимость перерисовки?	
+	giveArrPrint(arr) 
+	GlobalArr.globalArr=arr
 		
 	
 	
@@ -26,6 +25,7 @@ func arrPrint(x,y,count):
 	var node=scene.instance()	
 	add_child(node)	
 	var item=node.get_node(\"fieldItem/tab\")
+	GlobalArr.fieldId.append(item.get_instance_id())
 	node.position=Vector2(150+x,50+y)	
 	item.text=String(count)	
 	if item.text==\"16\":

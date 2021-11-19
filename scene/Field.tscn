@@ -42,4 +42,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="button_down" from="fieldItem/button" to="." method="_on_Button_button_down"]
+[connection signal="button_down" from="fieldItem/button" to="." method="_on_button_button_down"]
