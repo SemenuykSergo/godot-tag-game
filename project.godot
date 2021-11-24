@@ -18,6 +18,11 @@ config/icon="res://image/icon.png"
 
 GlobalArr="*res://script/GlobalArr.gd"
 
+[display]
+
+window/size/width=640
+window/size/height=480
+
 [gdnative]
 
 singletons=[  ]

@@ -14,7 +14,6 @@ func _ready():
 	var arr=[]
 	arr=setArr.setArr(arr)
 	arr=arrRand.arrRandom(arr)
-	# может здесь сделать проверку флага на необходимость перерисовки?	
 	giveArrPrint(arr) 
 	GlobalArr.globalArr=arr
 		
@@ -25,7 +24,7 @@ func arrPrint(x,y,count):
 	var node=scene.instance()	
 	add_child(node)	
 	var item=node.get_node(\"fieldItem/tab\")
-	GlobalArr.fieldId.append(item.get_instance_id())
+	GlobalArr.fieldId.append(item.get_instance_id())	# добавляем в массив id каждого созданного поля
 	node.position=Vector2(150+x,50+y)	
 	item.text=String(count)	
 	if item.text==\"16\":
