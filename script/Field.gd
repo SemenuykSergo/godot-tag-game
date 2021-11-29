@@ -7,20 +7,15 @@ var left=true
 var right=true
 var up=true
 var down=true
+var tempArr=[]
 
-
-func _on_button_button_down():		
+func _on_button_button_down():	
 	
 	itemField=get_node("fieldItem/tab")#нажатое поле
 	var positionArr=get_index() #позиция нажатого поля
-	#print(positionArr)		
-	verificationField(positionArr)
-	#print(positionArr+1)
-	#print(left)
+	verificationField(positionArr)	
 	examPositionField(positionArr)	
-	$fieldItem/beep.play()	
 	
-
 func verificationField(positionArr):
 	
 	if ([0,4,8,12].find(positionArr,0)!=-1):
@@ -59,7 +54,7 @@ func examPositionField(positionArr):
 			changeFieldItem(changeFieldPosition)
 
 func changeFieldItem(changeFieldPosition):
-		
+		$fieldItem/beep.play()			
 		#позиция поля по id с которым будет обмен
 		textExamField=changeFieldPosition	
 		tempValueArr=itemField.text	#содержимое нажатого поля временное хранение		
@@ -67,4 +62,30 @@ func changeFieldItem(changeFieldPosition):
 		itemField.text=String(textExamField.text)		
 		# содержимое пустого поля меняется на содержимое нажатого поля, хранимое во временной переменной
 		textExamField.text=String(tempValueArr) 
+		GlobalArr.globalCount+=1	
+		tempArrFunc()
 		
+func tempArrFunc():
+	var changeFieldPosition	
+	tempArr.clear()
+	for i in GlobalArr.globalArr.size():		
+		changeFieldPosition=instance_from_id(GlobalArr.fieldId[i])		
+		tempArr.append(changeFieldPosition.text)	
+	winArrFunc(tempArr)	
+		
+		
+func winArrFunc(tempArr):	
+	
+	tempArr[tempArr.find("")]=16	
+		
+	for i in GlobalArr.globalArr.size():		
+		if (str(tempArr[i])!=str(GlobalArr.winArr[i])):			
+			return
+	
+	yield(get_tree().create_timer(1),"timeout")	
+	var sceneLabel=preload("res://scene/Win.tscn")
+	var nodeLabel=sceneLabel.instance()		
+	add_child(nodeLabel)	
+	var itemLabel=nodeLabel.get_node("WinMessage")
+	itemLabel.text="You Win, Congratulation!"	
+	

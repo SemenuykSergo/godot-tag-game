@@ -9,13 +9,34 @@ var setArr=SetArr.new()
 var ArrRand=preload(\"res://script/ArrRandom.gd\")
 var arrRand=ArrRand.new()
 
+var sceneLabel
+var nodeLabel		
+var itemLabel	
+var tempCount=0
+
 		
-func _ready():
+func _ready():	
+	
 	var arr=[]
 	arr=setArr.setArr(arr)
 	arr=arrRand.arrRandom(arr)
 	giveArrPrint(arr) 
-	GlobalArr.globalArr=arr
+	GlobalArr.globalArr=arr		
+	
+	for i in GlobalArr.globalArr.size():
+		GlobalArr.winArr.append(i+1)	
+		
+		
+	sceneLabel=preload(\"res://scene/Label.tscn\")
+	nodeLabel=sceneLabel.instance()		
+	add_child(nodeLabel)	
+	itemLabel=nodeLabel.get_node(\"CanvasLayer/Label\")				
+		
+	
+func _process(delta):
+	if (GlobalArr.globalCount>tempCount):
+		itemLabel.text=\"Moves \"+str(GlobalArr.globalCount)
+		tempCount=GlobalArr.globalCount
 		
 	
 	
