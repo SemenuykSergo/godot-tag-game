@@ -86,6 +86,6 @@ func winArrFunc(tempArr):
 	var sceneLabel=preload("res://scene/Win.tscn")
 	var nodeLabel=sceneLabel.instance()		
 	add_child(nodeLabel)	
-	var itemLabel=nodeLabel.get_node("WinMessage")
+	var itemLabel=nodeLabel.get_node("ColorRect/WinMessage")
 	itemLabel.text="You Win, Congratulation!"	
-	
+#

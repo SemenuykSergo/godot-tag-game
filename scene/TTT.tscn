@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://image/field.png" type="Texture" id=2]
+[ext_resource path="res://script/Ttt.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 0.124
+anchor_bottom = 0.165
+margin_right = -79.36
+margin_bottom = -79.2
+rect_min_size = Vector2( 80, 80 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="field" type="Sprite" parent="."]
+position = Vector2( 40, 40 )
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="field"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -40.0
+margin_right = -40.0
+margin_bottom = -40.0
+rect_min_size = Vector2( 40, 40 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.611765, 0.156863, 0.156863, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="field/Label"]
+anchor_right = 1.008
+anchor_bottom = 1.0
+margin_left = 0.629959
+margin_top = 1.00001
+margin_right = -0.0100021
+margin_bottom = -1.0
+rect_min_size = Vector2( 40, 40 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_down" from="field/Label/Button" to="." method="_on_Button_button_down"]

@@ -44,9 +44,10 @@ func arrPrint(x,y,count):
 	var scene=preload(\"res://scene/Field.tscn\")
 	var node=scene.instance()	
 	add_child(node)	
+	#get_node(\"CenterContainer\").add_child(node)
 	var item=node.get_node(\"fieldItem/tab\")
 	GlobalArr.fieldId.append(item.get_instance_id())	# добавляем в массив id каждого созданного поля
-	node.position=Vector2(150+x,50+y)	
+	node.position=Vector2(175+x,50+y)	# 150,50
 	item.text=String(count)	
 	if item.text==\"16\":
 		item.text=\"\"	
